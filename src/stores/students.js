@@ -2,18 +2,18 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { isSupabaseConfigured, supabase } from '../lib/supabase'
 
-const demoStudents = [
-  { id: 'demo-1', first_name: 'Иван', last_name: 'Петров', group_time: '18:00', attendance: 85, behavior: 5, performance: 5, photo_url: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=320&h=420&fit=crop', note: '' },
-  { id: 'demo-2', first_name: 'Александр', last_name: 'Кузнецов', group_time: '18:00', attendance: 90, behavior: 4, performance: 5, photo_url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=320&h=420&fit=crop', note: '' },
-  { id: 'demo-3', first_name: 'Дмитрий', last_name: 'Смирнов', group_time: '18:00', attendance: 80, behavior: 5, performance: 4, photo_url: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=320&h=420&fit=crop', note: '' },
-  { id: 'demo-4', first_name: 'Максим', last_name: 'Волков', group_time: '18:00', attendance: 78, behavior: 4, performance: 4, photo_url: '', note: '' },
-  { id: 'demo-5', first_name: 'Артём', last_name: 'Соколов', group_time: '18:00', attendance: 75, behavior: 4, performance: 4, photo_url: '', note: '' },
-  { id: 'demo-6', first_name: 'Никита', last_name: 'Фёдоров', group_time: '18:00', attendance: 72, behavior: 5, performance: 3, photo_url: '', note: '' },
-  { id: 'demo-7', first_name: 'Егор', last_name: 'Иванов', group_time: '18:00', attendance: 70, behavior: 4, performance: 3, photo_url: '', note: '' },
-  { id: 'demo-8', first_name: 'Илья', last_name: 'Кузнецов', group_time: '18:00', attendance: 68, behavior: 4, performance: 3, photo_url: '', note: '' },
-  { id: 'demo-9', first_name: 'Роман', last_name: 'Павлов', group_time: '18:00', attendance: 65, behavior: 3, performance: 4, photo_url: '', note: '' },
-  { id: 'demo-10', first_name: 'Даниил', last_name: 'Соколов', group_time: '18:00', attendance: 60, behavior: 4, performance: 3, photo_url: '', note: '' }
-]
+// const demoStudents = [
+//   { id: 'demo-1', first_name: 'Иван', last_name: 'Петров', group_time: '18:00', attendance: 85, behavior: 5, performance: 5, photo_url: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=320&h=420&fit=crop', note: '' },
+//   { id: 'demo-2', first_name: 'Александр', last_name: 'Кузнецов', group_time: '18:00', attendance: 90, behavior: 4, performance: 5, photo_url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=320&h=420&fit=crop', note: '' },
+//   { id: 'demo-3', first_name: 'Дмитрий', last_name: 'Смирнов', group_time: '18:00', attendance: 80, behavior: 5, performance: 4, photo_url: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=320&h=420&fit=crop', note: '' },
+//   { id: 'demo-4', first_name: 'Максим', last_name: 'Волков', group_time: '18:00', attendance: 78, behavior: 4, performance: 4, photo_url: '', note: '' },
+//   { id: 'demo-5', first_name: 'Артём', last_name: 'Соколов', group_time: '18:00', attendance: 75, behavior: 4, performance: 4, photo_url: '', note: '' },
+//   { id: 'demo-6', first_name: 'Никита', last_name: 'Фёдоров', group_time: '18:00', attendance: 72, behavior: 5, performance: 3, photo_url: '', note: '' },
+//   { id: 'demo-7', first_name: 'Егор', last_name: 'Иванов', group_time: '18:00', attendance: 70, behavior: 4, performance: 3, photo_url: '', note: '' },
+//   { id: 'demo-8', first_name: 'Илья', last_name: 'Кузнецов', group_time: '18:00', attendance: 68, behavior: 4, performance: 3, photo_url: '', note: '' },
+//   { id: 'demo-9', first_name: 'Роман', last_name: 'Павлов', group_time: '18:00', attendance: 65, behavior: 3, performance: 4, photo_url: '', note: '' },
+//   { id: 'demo-10', first_name: 'Даниил', last_name: 'Соколов', group_time: '18:00', attendance: 60, behavior: 4, performance: 3, photo_url: '', note: '' }
+// ]
 
 const LOCAL_KEY = 'sambo-club-students-v1'
 const score = s => Math.round((Number(s.attendance || 0) / 100) * 50 + (Number(s.behavior || 0) / 5) * 25 + (Number(s.performance || 0) / 5) * 25)
